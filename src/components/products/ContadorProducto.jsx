@@ -1,20 +1,8 @@
-import { useState } from 'react';
+import { useContador } from '../../hooks/useContador';
 import styles from './TarjetaProducto.module.css';
 
 const ContadorProducto = ({ stock, nombre }) => {
-  const [cantidad, setCantidad] = useState(0);
-
-  const incrementar = () => {
-    if (cantidad < stock) {
-      setCantidad(cantidad + 1);
-    }
-  };
-
-  const decrementar = () => {
-    if (cantidad > 0) {
-      setCantidad(cantidad - 1);
-    }
-  };
+  const { cantidad, incrementar, decrementar } = useContador(stock);
 
   const agregarAlCarrito = () => {
     alert(`¡Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
