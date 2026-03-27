@@ -15,6 +15,7 @@ function App() {
               nombre={producto.nombre}
               precio={producto.precio}
               imagen={producto.imagen}
+              stock={producto.stock}
             />
           ))}
         </div>
