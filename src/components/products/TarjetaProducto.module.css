@@ -95,3 +95,18 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* TarjetaProducto.module.css */
+
+.accionesContenedor {
+  display: flex;          /* Activa el modo fila */
+  align-items: center;    /* Centra verticalmente el corazón con los botones */
+  justify-content: center; /* Opcional: centra todo el bloque en la tarjeta */
+  gap: 15px;             /* Espacio entre el contador y el corazón */
+  margin-top: 15px;       /* Separación con el texto del stock */
+}
+
+/* Opcional: Ajustar el tamaño del corazón si se ve muy grande respecto a los botones */
+.accionesContenedor :global(.heart-container) {
+  transform: scale(0.8); /* Lo achica un 20% para que armonice mejor */
+}
