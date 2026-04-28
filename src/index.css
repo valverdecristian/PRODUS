@@ -1,24 +1,23 @@
 :root {
-  --bg: #E8F5FD;           /* El azul más claro para el fondo */
-  --border: #BDE4F9;       /* Un poco más oscuro para bordes */
-  --code-bg: #8ACFF5;      /* Fondo para bloques de código */
-  --text: #09496C;         /* Azul oscuro para párrafos */
-  --text-h: #021017;       /* El azul más profundo para títulos */
+  --bg: #062D42;
+  --border: #09496C;
+  --code-bg: #021017;
+  --text: #BDE4F9;
+  --text-h: #E8F5FD;
+  --accent: #69C2F2;
+  --accent-bg: rgba(105, 194, 242, 0.1);
+  --accent-border: rgba(105, 194, 242, 0.5);
 
-  --accent: #14A0EB;       /* Tu azul principal (Primary) */
-  --accent-bg: rgba(20, 160, 235, 0.1);
-  --accent-border: rgba(20, 160, 235, 0.5);
-  
-  --success: #8AF5E5;      /* Verde/Cian para estados positivos */
-  --info: #8AD0F5;         /* Azul claro para información */
-  --secondary: #8A9AF5;    /* Periwinkle para elementos secundarios */
-  --warning: #F5E58A;      /* Amarillo para alertas */
-  --danger: #F58A9A;       /* Rosado/Rojo para errores o borrar */
-  --orange: #F5AF8A;       /* Para destacar ofertas */
+  --success: #8AF5E5;
+  --info: #8AD0F5;
+  --secondary: #8A9AF5;
+  --warning: #F5E58A;
+  --danger: #F58A9A;
+  --orange: #F5AF8A;
 
-  --shadow: rgba(2, 16, 23, 0.1) 0 10px 15px -3px, rgba(2, 16, 23, 0.05) 0 4px 6px -2px;
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 
-  /* Tipografías y Base */
+  /* --- TIPOGRAFÍAS Y BASE --- */
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -37,20 +36,7 @@
   }
 }
 
-/* Configuración para el Modo Oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #062D42;         /* Azul muy oscuro para el fondo */
-    --border: #09496C;     /* Un poco más claro para bordes */
-    --code-bg: #021017;
-    --text: #BDE4F9;       /* Azul claro para que se lea bien en oscuro */
-    --text-h: #E8F5FD;     /* El blanco/azul más claro para títulos */
-    --accent: #69C2F2;     /* Un azul más brillante para destacar en negro */
-    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-}
-
-/* ... (El resto de los estilos de body, h1, h2, etc., se mantienen igual) */
+/* --- ESTILOS DE ESTRUCTURA --- */
 
 body {
   margin: 0;
@@ -72,25 +58,26 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 3rem;
   letter-spacing: -1.68px;
   margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 2rem;
     margin: 20px 0;
   }
 }
 h2 {
-  font-size: 24px;
+  font-size: 2rem;
   line-height: 118%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 1.5rem;
   }
 }
 p {
@@ -120,20 +107,12 @@ code {
   margin: 0 auto;
 }
 
-.catalog-container h2 {
-  text-align: center;
-  margin-bottom: 32px;
-  color: var(--text-h);
-  font-size: 2rem;
-}
-
 /* La Grilla de Productos */
 .product-grid {
   display: grid;
-  /* Crea columnas automáticas de mínimo 280px */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 32px; /* Espacio entre las tarjetas */
-  justify-items: center; /* Centra las tarjetas si sobra espacio */
+  gap: 20px;
+  justify-items: center;
 }
 
 @media (max-width: 768px) {
