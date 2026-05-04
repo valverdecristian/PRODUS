@@ -81,6 +81,7 @@ h2 {
   }
 }
 p {
+  color: var(--text-h);
   margin: 0;
 }
 

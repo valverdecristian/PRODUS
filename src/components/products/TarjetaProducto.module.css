@@ -1,3 +1,10 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  position: relative;
+}
+
 .card {
   background-color: var(--bg);
   border: 1px solid var(--border);
@@ -6,7 +13,7 @@
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  max-width: 280px;
+  flex: 1;
 }
 
 .card:hover {
@@ -45,6 +52,7 @@
   margin: 0.5rem 0;
   font-size: 0.9rem;
   opacity: 0.8;
+  color: white;
 }
 
 .accionesCart {
@@ -77,6 +85,7 @@
   font-weight: bold;
   min-width: 20px;
   text-align: center;
+  color: white;
 }
 
 .btnAgregar {
@@ -96,14 +105,12 @@
   cursor: not-allowed;
 }
 
-/* TarjetaProducto.module.css */
-
 .accionesContenedor {
-  display: flex;          /* Activa el modo fila */
-  align-items: center;    /* Centra verticalmente el corazón con los botones */
+  display: flex; /* Activa el modo fila */
+  align-items: center; /* Centra verticalmente el corazón con los botones */
   justify-content: center; /* Opcional: centra todo el bloque en la tarjeta */
-  gap: 15px;             /* Espacio entre el contador y el corazón */
-  margin-top: 15px;       /* Separación con el texto del stock */
+  gap: 15px; /* Espacio entre el contador y el corazón */
+  margin-top: 15px; /* Separación con el texto del stock */
 }
 
 /* Opcional: Ajustar el tamaño del corazón si se ve muy grande respecto a los botones */

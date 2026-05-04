@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cristian",
+        "email": "cristian@produs.com",
+        "puesto": "CEO",
+        "foto": "/images/Cristian.png"
+    },
+    {
+        "id": 2,
+        "nombre": "Malcolm",
+        "email": "malcolm@produs.com",
+        "puesto": "Senior Backend Engineer",
+        "foto": "/images/Malcolm.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Lois",
+        "email": "lois@produs.com",
+        "puesto": "QA Engineer",
+        "foto": "/images/Lois.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Hal",
+        "email": "hal@produs.com",
+        "puesto": "Frontend Developer",
+        "foto": "/images/Hal.jpg"
+    }
+]

@@ -8,7 +8,7 @@ const ContenedorListaProductos = () => {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch('https://69effac5112e1b968e251cf0.mockapi.io/api/v1/productos')
+    fetch(`/data/productos.json`)
       .then(response => response.json())
       .then(data => {
         setProductos(data);
@@ -29,12 +29,12 @@ const ContenedorListaProductos = () => {
   }
 
   return (
-    <div>
-      <h2>Productos Destacados</h2>
+    <section className="catalog-container">
+      <h2>Lista de Productos</h2>
       <div>
         <ListaProductos productos={productos} />
       </div>
-    </div>
+    </section>
   )
 }
 

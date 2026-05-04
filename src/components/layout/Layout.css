@@ -50,7 +50,7 @@
 }
 
 .main-footer {
-  background-color: var(--text-h);
+  background-color: var(--code-bg);
   color: var(--bg);
   text-align: center;
   padding: 2rem;
