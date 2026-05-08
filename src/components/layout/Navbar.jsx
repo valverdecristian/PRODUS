@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-links">
-        <Link to="/" className="nav-button">Inicio</Link>
-        <Link to="/productos" className="nav-button">Productos</Link>
-        <Link to="/destacados" className="nav-button">Destacados</Link>
-        <Link to="/carrito" className="nav-button">Carrito 🛒</Link>
+        <Button text="Inicio" to="/" />
+        <Button text="Productos" to="/productos" />
+        <Button text="Destacados" to="/destacados" />
+        <Button text="🛒" to="/carrito" />
       </div>
     </nav>
   );

@@ -1,25 +1,26 @@
 :root {
-  --bg: #062D42;
-  --border: #09496C;
+  --bg: #062d42;
+  --border: #09496c;
   --code-bg: #021017;
-  --text: #BDE4F9;
-  --text-h: #E8F5FD;
-  --accent: #69C2F2;
+  --text: #bde4f9;
+  --text-h: #e8f5fd;
+  --accent: #69c2f2;
   --accent-bg: rgba(105, 194, 242, 0.1);
   --accent-border: rgba(105, 194, 242, 0.5);
 
-  --success: #8AF5E5;
-  --info: #8AD0F5;
-  --secondary: #8A9AF5;
-  --warning: #F5E58A;
-  --danger: #F58A9A;
-  --orange: #F5AF8A;
+  --success: #8af5e5;
+  --info: #8ad0f5;
+  --secondary: #8a9af5;
+  --warning: #f5e58a;
+  --danger: #f58a9a;
+  --orange: #f5af8a;
 
-  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 
   /* --- TIPOGRAFÍAS Y BASE --- */
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -43,11 +44,10 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
