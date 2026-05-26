@@ -52,7 +52,7 @@ const ProductoDetalle = () => {
           <p className="precio">${producto.precio.toLocaleString('es-AR')}</p>
           <p className="stock">Stock disponible: {producto.stock}</p>
           <div className="contenedor-acciones">
-            <ContadorProducto stock={producto.stock} nombre={producto.nombre} />
+            <ContadorProducto producto={producto} esDetalle={true} />
             <BotonFavorito />
           </div>
         </div>

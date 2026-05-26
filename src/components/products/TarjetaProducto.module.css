@@ -105,6 +105,13 @@
   cursor: not-allowed;
 }
 
+.btnAgregado {
+  background-color: #00DA72 !important;
+  color: #ffffff !important;
+  cursor: default;
+}
+
+
 .accionesContenedor {
   display: flex; /* Activa el modo fila */
   align-items: center; /* Centra verticalmente el corazón con los botones */
