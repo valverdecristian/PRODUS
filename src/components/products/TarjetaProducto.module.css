@@ -1,7 +1,7 @@
 .cardWrapper {
   display: flex;
   flex-direction: column;
-  max-width: 280px;
+  max-width: 360px;
   position: relative;
 }
 
@@ -25,6 +25,7 @@
   width: 100%;
   height: 200px;
   background-color: var(--code-bg);
+  position: relative;
 }
 
 .image {
@@ -33,8 +34,15 @@
   object-fit: cover;
 }
 
+.favoriteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
 .info {
-  padding: 1.5rem;
+  padding: 1.8rem;
 }
 
 .nombre {
@@ -106,18 +114,17 @@
 }
 
 .btnAgregado {
-  background-color: #00DA72 !important;
+  background-color: #00da72 !important;
   color: #ffffff !important;
   cursor: default;
 }
 
-
 .accionesContenedor {
-  display: flex; /* Activa el modo fila */
-  align-items: center; /* Centra verticalmente el corazón con los botones */
-  justify-content: center; /* Opcional: centra todo el bloque en la tarjeta */
-  gap: 15px; /* Espacio entre el contador y el corazón */
-  margin-top: 15px; /* Separación con el texto del stock */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 0;
 }
 
 /* Opcional: Ajustar el tamaño del corazón si se ve muy grande respecto a los botones */

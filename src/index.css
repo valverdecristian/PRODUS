@@ -111,9 +111,10 @@ code {
 /* La Grilla de Productos */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 32px 24px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 50px 40px;
   justify-items: center;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {
@@ -122,4 +123,3 @@ code {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }
-

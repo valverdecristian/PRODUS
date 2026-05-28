@@ -9,6 +9,9 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock }) => {
       <Link to={`/producto/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className={styles.imageContainer}>
           <img src={imagen} alt={nombre} className={styles.image} />
+          <div className={styles.favoriteButton}>
+            <BotonFavorito />
+          </div>
         </div>
         <div className={styles.info} style={{ paddingBottom: 0 }}>
           <h3 className={styles.nombre}>{nombre}</h3>
@@ -19,11 +22,10 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock }) => {
       <div className={styles.info} style={{ paddingTop: 0 }}>
         <div className={styles.accionesContenedor}>
           <ContadorProducto producto={{ id, imagen, nombre, precio, stock }} />
-          <BotonFavorito />
         </div>
       </div>
     </div>
   );
 };
 
-export default TarjetaProducto;
+export default TarjetaProducto;

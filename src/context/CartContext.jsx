@@ -59,6 +59,12 @@ export const CartProvider = ({ children }) => {
 
   const cartTotal = cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
 
+  // NUEVA FUNCION: Obtener la cantidad de un item especifico
+  const getCantidadActual = (productId) => {
+    const item = cart.find((item) => item.id === productId);
+    return item ? item.cantidad : 0;
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -69,6 +75,7 @@ export const CartProvider = ({ children }) => {
         clearCart,
         cartCount,
         cartTotal,
+        getCantidadActual,
       }}
     >
       {children}

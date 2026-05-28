@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 
 const ContadorProducto = ({ producto, esDetalle = false }) => {
   const { cantidad, incrementar, decrementar } = useContador(producto.stock);
-  const { addToCart } = useCart();
+  const { addToCart, getCantidadActual } = useCart();
+  const cantidadActual = getCantidadActual(producto.id);
   const [agregado, setAgregado] = useState(false);
 
   useEffect(() => {
@@ -30,13 +31,14 @@ const ContadorProducto = ({ producto, esDetalle = false }) => {
       <button onClick={decrementar} disabled={cantidad === 0 || agregado} className={styles.btnCart}>-</button>
       <span className={styles.cantidad}>{cantidad}</span>
       <button onClick={incrementar} disabled={cantidad === producto.stock || agregado} className={styles.btnCart}>+</button>
-      <button 
-        onClick={agregarAlCarrito} 
-        disabled={cantidad === 0 || agregado} 
+      <button
+        onClick={agregarAlCarrito}
+        disabled={cantidad === 0 || agregado}
         className={`${styles.btnAgregar} ${agregado ? styles.btnAgregado : ''}`}
-      >
+        >
         {agregado ? 'Agregado al carrito' : 'Agregar Producto'}
       </button>
+      <p>En carrito: {cantidadActual}</p>
     </div>
   );
 };
