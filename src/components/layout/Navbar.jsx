@@ -10,6 +10,7 @@ const Navbar = () => {
         <Button text="Inicio" to="/" />
         <Button text="Productos" to="/productos" />
         <Button text="Destacados" to="/destacados" />
+        <Button text="+" to="/agregar-producto" />
         <Button text={cartCount > 0 ? `🛒 (${cartCount})` : '🛒'} to="/carrito" />
       </div>
     </nav>
