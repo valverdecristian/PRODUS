@@ -1,12 +1,14 @@
 import { useCart } from '../../hooks/useCart';
 import { Link } from 'react-router-dom';
+import { useToast } from '../../context/ToastContext';
 import './Carrito.css';
 
 const Carrito = () => {
   const { cart, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
+  const { showToast } = useToast();
 
   const handleSimularCompra = () => {
-    alert('¡Gracias por tu compra! Tu pedido ha sido procesado con éxito.');
+    showToast('¡Gracias por tu compra! Tu pedido ha sido procesado con éxito.', 'success');
     clearCart();
   };
 

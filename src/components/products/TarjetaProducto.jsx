@@ -2,8 +2,13 @@ import styles from './TarjetaProducto.module.css';
 import ContadorProducto from './ContadorProducto';
 import BotonFavorito from '../ui/BotonFavorito';
 import { Link } from 'react-router-dom';
+import categorias from '../../data/categorias.json';
 
-const TarjetaProducto = ({ id, imagen, nombre, precio, stock }) => {
+const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
+  const nombreCategoria = categoria 
+    ? (categorias.find(c => c.id === categoria)?.nombre || 'Sin Categoría') 
+    : null;
+
   return (
     <div className={styles.card}>
       <Link to={`/producto/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -14,6 +19,9 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock }) => {
           </div>
         </div>
         <div className={styles.info} style={{ paddingBottom: 0 }}>
+          {nombreCategoria && (
+            <span className={styles.categoriaBadge}>{nombreCategoria}</span>
+          )}
           <h3 className={styles.nombre}>{nombre}</h3>
           <p className={styles.precio}>${precio.toLocaleString('es-AR')}</p>
           <p className={styles.stock}>Stock disponible: {stock}</p>
@@ -21,7 +29,7 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock }) => {
       </Link>
       <div className={styles.info} style={{ paddingTop: 0 }}>
         <div className={styles.accionesContenedor}>
-          <ContadorProducto producto={{ id, imagen, nombre, precio, stock }} />
+          <ContadorProducto producto={{ id, imagen, nombre, precio, stock, categoria }} />
         </div>
       </div>
     </div>

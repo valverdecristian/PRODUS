@@ -1,0 +1,10 @@
+[
+  { "id": "cat_1", "nombre": "Tecnología" },
+  { "id": "cat_2", "nombre": "Electrohogar" },
+  { "id": "cat_3", "nombre": "Hogar y Decoración" },
+  { "id": "cat_4", "nombre": "Climatización" },
+  { "id": "cat_5", "nombre": "Televisores" },
+  { "id": "cat_6", "nombre": "Celulares" },
+  { "id": "cat_7", "nombre": "Mascotas" },
+  { "id": "cat_8", "nombre": "Otros" }
+]

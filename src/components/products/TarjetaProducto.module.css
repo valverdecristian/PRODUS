@@ -131,3 +131,17 @@
 .accionesContenedor :global(.heart-container) {
   transform: scale(0.8); /* Lo achica un 20% para que armonice mejor */
 }
+
+.categoriaBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}

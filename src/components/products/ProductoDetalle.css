@@ -106,3 +106,18 @@
     max-width: 100%;
   }
 }
+
+.categoria-detalle {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  margin-bottom: -5px;
+}

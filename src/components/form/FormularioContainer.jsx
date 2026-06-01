@@ -3,17 +3,20 @@ import FormularioProducto from "./FormularioProducto";
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../context/ToastContext";
 
 const FormularioContainer = () => {
   const [datosForm, setDatosForm] = useState({
     nombre: "",
     precio: "",
-    stock: ""
+    stock: "",
+    categoria: ""
   });
 
   const [imagenFile, setImagenFile] = useState(null);
   const [cargando, setCargando] = useState(false);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const manejarCambio = (evento) => {
     const { name, value } = evento.target;
@@ -30,13 +33,13 @@ const FormularioContainer = () => {
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
 
-    if (!datosForm.nombre || !datosForm.precio || !datosForm.stock) {
-      alert("Por favor, completa todos los campos del producto.");
+    if (!datosForm.nombre || !datosForm.precio || !datosForm.stock || !datosForm.categoria) {
+      showToast("Por favor, completa todos los campos del producto.", "error");
       return;
     }
 
     if (!imagenFile) {
-      alert("Por favor, selecciona una imagen para el producto.");
+      showToast("Por favor, selecciona una imagen para el producto.", "error");
       return;
     }
 
@@ -72,7 +75,8 @@ const FormularioContainer = () => {
         nombre: datosForm.nombre,
         precio: Number(datosForm.precio),
         stock: Number(datosForm.stock),
-        imagen: urlImagen
+        imagen: urlImagen,
+        categoria: datosForm.categoria
       };
 
       console.log("Enviando los siguientes datos COMPLETOS a Firestore:", productoCompleto);
@@ -80,13 +84,14 @@ const FormularioContainer = () => {
       const productoAgregado = await addDoc(productosCollection, productoCompleto);
       console.log("Producto agregado con ID:", productoAgregado.id);
 
-      alert("¡Producto agregado con éxito!");
+      showToast("¡Producto agregado con éxito!", "success");
 
       // Reset form
       setDatosForm({
         nombre: "",
         precio: "",
-        stock: ""
+        stock: "",
+        categoria: ""
       });
       setImagenFile(null);
 
@@ -94,7 +99,7 @@ const FormularioContainer = () => {
       navigate("/productos");
     } catch (error) {
       console.error("Error al procesar el formulario:", error);
-      alert(`Hubo un error al guardar el producto: ${error.message}`);
+      showToast(`Hubo un error al guardar el producto: ${error.message}`, "error");
     } finally {
       setCargando(false);
     }

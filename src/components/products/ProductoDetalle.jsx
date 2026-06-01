@@ -3,6 +3,7 @@ import ContadorProducto from './ContadorProducto';
 import BotonFavorito from '../ui/BotonFavorito';
 import { useProducto } from '../../hooks/useProducto';
 import './ProductoDetalle.css';
+import categorias from '../../data/categorias.json';
 
 const ProductoDetalle = () => {
   const { id } = useParams();
@@ -20,6 +21,10 @@ const ProductoDetalle = () => {
     return <p>Producto no encontrado</p>;
   }
 
+  const nombreCategoria = producto.categoria 
+    ? (categorias.find(c => c.id === producto.categoria)?.nombre || 'Sin Categoría') 
+    : null;
+
   return (
     <section className="detalle-producto">
       <div className="contenedor-detalle">
@@ -27,6 +32,9 @@ const ProductoDetalle = () => {
           <img src={producto.imagen} alt={producto.nombre} />
         </div>
         <div className="info-producto">
+          {nombreCategoria && (
+            <span className="categoria-detalle">{nombreCategoria}</span>
+          )}
           <h1>{producto.nombre}</h1>
           <p className="precio">${producto.precio.toLocaleString('es-AR')}</p>
           <p className="stock">Stock disponible: {producto.stock}</p>

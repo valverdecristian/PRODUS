@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./FormularioProducto.css";
+import categorias from "../../data/categorias.json";
 
 const FormularioProducto = ({ datosForm, manejarCambio, manejarEnvio, manejarCambioImagen, cargando }) => {
   const [nombreArchivo, setNombreArchivo] = useState("");
@@ -66,6 +67,26 @@ const FormularioProducto = ({ datosForm, manejarCambio, manejarEnvio, manejarCam
             min="0"
             disabled={cargando}
           />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label" htmlFor="categoria">Categoría:</label>
+          <select
+            id="categoria"
+            className="form-input"
+            name="categoria"
+            value={datosForm.categoria}
+            onChange={manejarCambio}
+            required
+            disabled={cargando}
+          >
+            <option value="">Selecciona una categoría</option>
+            {categorias.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.nombre}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">
