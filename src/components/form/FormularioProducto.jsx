@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./FormularioProducto.css";
 import categorias from "../../data/categorias.json";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const FormularioProducto = ({ datosForm, manejarCambio, manejarEnvio, manejarCambioImagen, cargando }) => {
   const [nombreArchivo, setNombreArchivo] = useState("");
@@ -14,6 +15,10 @@ const FormularioProducto = ({ datosForm, manejarCambio, manejarEnvio, manejarCam
     }
     manejarCambioImagen(evento);
   };
+
+  if (cargando) {
+    return <LoadingSpinner mensaje="Guardando Producto..." />;
+  }
 
   return (
     <div className="formulario-contenedor">
@@ -113,13 +118,7 @@ const FormularioProducto = ({ datosForm, manejarCambio, manejarEnvio, manejarCam
 
         <div className="form-actions">
           <button className="btn-guardar" type="submit" disabled={cargando}>
-            {cargando ? (
-              <>
-                <span className="spinner">⏳</span> Guardando...
-              </>
-            ) : (
-              "Guardar Producto"
-            )}
+            Guardar Producto
           </button>
         </div>
       </form>

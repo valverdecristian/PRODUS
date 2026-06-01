@@ -1,0 +1,63 @@
+.categories-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 16px;
+  margin: 1.5rem auto 2.5rem auto;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.badge-categoria {
+  background: rgba(105, 194, 242, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 0.6rem 1.4rem;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.badge-categoria:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--text-h);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(105, 194, 242, 0.2);
+}
+
+.badge-categoria.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--code-bg);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(105, 194, 242, 0.35);
+}
+
+.badge-categoria:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.badge-categoria:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.no-products-msg {
+  font-size: 1.15rem;
+  color: var(--text);
+  margin: 4rem auto;
+  opacity: 0.75;
+  text-align: center;
+  font-style: italic;
+}
+
+.error-message {
+  color: var(--danger);
+  font-weight: 500;
+  text-align: center;
+  margin: 2rem 0;
+}

@@ -10,10 +10,17 @@
   z-index: 100;
 }
 
-.logo h1 {
-  color: var(--accent);
-  margin: 0;
-  font-size: 1.8rem;
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  mix-blend-mode: lighten;
+}
+
+.logo-img:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .nav-links {

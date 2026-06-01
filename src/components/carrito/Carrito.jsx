@@ -29,7 +29,7 @@ const Carrito = () => {
 
   return (
     <div className="cart-page-container">
-      <h1 className="cart-title">Tu Carrito de Compras</h1>
+      <h2>Tu Carrito de Compras</h2>
       
       <div className="cart-layout">
         {/* Lista de productos */}

@@ -1,11 +1,12 @@
 import ListaProductos from "./ListaProductos";
+import LoadingSpinner from "../ui/LoadingSpinner";
 import { useProductos } from "../../hooks/useProductos";
 
 const ContenedorListaProductos = () => {
   const { productos, cargando, error } = useProductos();
 
   if (cargando) {
-    return <p>Cargando productos, por favor espere...</p>;
+    return <LoadingSpinner mensaje="Cargando Lista de productos..." />;
   }
 
   if (error) {
