@@ -5,6 +5,8 @@ import ProductoDetalle from "./components/products/ProductoDetalle";
 import Carrito from "./components/carrito/Carrito";
 import FormularioContainer from "./components/form/FormularioContainer";
 import CategoriasContainer from "./components/products/CategoriasContainer";
+import Login from "./components/login/Login";
+import Registro from "./components/registro/Registro";
 import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
 import { Routes, Route } from "react-router-dom";
@@ -21,6 +23,8 @@ function App() {
             <Route path="carrito" element={<Carrito />} />
             <Route path="agregar-producto" element={<FormularioContainer />} />
             <Route path="categorias" element={<CategoriasContainer />} />
+            <Route path="login" element={<Login />} />
+            <Route path="registro" element={<Registro />} />
           </Route>
         </Routes>
       </CartProvider>

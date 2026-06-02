@@ -1,0 +1,132 @@
+.registro-contenedor {
+  max-width: 450px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background: var(--code-bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow), 0 0 15px rgba(105, 194, 242, 0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.registro-contenedor:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 25px rgba(105, 194, 242, 0.15);
+}
+
+.registro-titulo {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(105, 194, 242, 0.3);
+  text-align: center;
+}
+
+.registro-subtitulo {
+  font-size: 0.95rem;
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-h);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(6, 45, 66, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-h);
+  font-family: var(--sans);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(105, 194, 242, 0.3);
+  background: rgba(6, 45, 66, 0.8);
+}
+
+.form-input::placeholder {
+  color: var(--text);
+  opacity: 0.4;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-registrar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem 2.5rem;
+  background: var(--accent);
+  color: var(--code-bg);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-registrar:hover:not(:disabled) {
+  background: var(--text-h);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(105, 194, 242, 0.2);
+}
+
+.btn-registrar:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-registrar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--border);
+  color: var(--text);
+}
+
+.registro-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.registro-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.registro-link:hover {
+  color: var(--text-h);
+  text-decoration: underline;
+}

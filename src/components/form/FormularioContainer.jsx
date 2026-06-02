@@ -2,10 +2,17 @@ import { useState } from "react";
 import FormularioProducto from "./FormularioProducto";
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from "../../firebase/config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
+import { useAuth } from "../../context/AuthContext";
 
 const FormularioContainer = () => {
+  const { user } = useAuth();
+
+  if (!user || user.rol !== 'admin') {
+    return <Navigate to="/" replace />;
+  }
+
   const [datosForm, setDatosForm] = useState({
     nombre: "",
     precio: "",
