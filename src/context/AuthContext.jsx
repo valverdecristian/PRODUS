@@ -32,17 +32,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // onAuthStateChanged es el observador de Firebase
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        // Si hay un usuario, buscamos su rol en Firestore.
         const userDocRef = doc(db, "usuarios", currentUser.uid);
         const userDocSnap = await getDoc(userDocRef);
         if (userDocSnap.exists() && userDocSnap.data().rol === 'admin') {
-          // Si el documento existe y tiene rol de admin, lo asignamos.
           setUser({ ...currentUser, rol: 'admin' });
         } else {
-          // Para cualquier otro caso, es un usuario regular.
           setUser({ ...currentUser, rol: 'user' });
         }
       } else {
@@ -50,7 +46,6 @@ export const AuthProvider = ({ children }) => {
       }
       setLoading(false);
     });
-    // Limpiamos el observador al desmontar
     return () => unsubscribe();
   }, [auth]);
 

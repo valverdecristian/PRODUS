@@ -8,6 +8,7 @@ import CategoriasContainer from "./components/products/CategoriasContainer";
 import Login from "./components/login/Login";
 import Registro from "./components/registro/Registro";
 import Gestion from "./components/gestion/Gestion";
+import Inicio from "./components/inicio/Inicio";
 import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
 import { ProductosProvider } from "./context/ProductosContext";
@@ -20,7 +21,7 @@ function App() {
         <CartProvider>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<ContenedorListaProductos />} />
+              <Route index element={<Inicio />} />
               <Route path="productos" element={<ContenedorListaProductos />} />
               <Route path="producto/:id" element={<ProductoDetalle />} />
               <Route path="carrito" element={<Carrito />} />

@@ -1,0 +1,155 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { useProductos } from "../../hooks/useProductos";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import "./Inicio.css";
+
+const Inicio = () => {
+  const { user } = useAuth();
+  const { productos, cargando, error } = useProductos();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const televisores = productos.filter(
+    (p) => p.categoria?.toLowerCase() === "cat_5"
+  );
+
+  const maxSlides = televisores.length;
+
+  useEffect(() => {
+    if (maxSlides <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % maxSlides);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [maxSlides]);
+
+  const nextSlide = () => {
+    if (maxSlides <= 1) return;
+    setCurrentIndex((prev) => (prev + 1) % maxSlides);
+  };
+
+  const prevSlide = () => {
+    if (maxSlides <= 1) return;
+    setCurrentIndex((prev) => (prev - 1 + maxSlides) % maxSlides);
+  };
+
+  if (cargando) {
+    return <LoadingSpinner mensaje="Cargando portada..." />;
+  }
+
+  if (error) {
+    return (
+      <div className="inicio-container">
+        <p className="error-message">Error al cargar la portada: {error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="inicio-page">
+      {televisores.length > 0 && (
+        <section className="hero-carousel-section">
+          <div className="carousel-wrapper">
+            {maxSlides > 1 && (
+              <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Anterior">
+                &#10094;
+              </button>
+            )}
+
+            <div className="carousel-window">
+              <div
+                className="carousel-track"
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                }}
+              >
+                {televisores.map((tv) => (
+                  <div className="carousel-slide-item" key={tv.id}>
+                    <div className="banner-slide">
+                      <div className="banner-content">
+                        <span className="banner-badge">ESPECIAL MUNDIAL</span>
+                        <h2 className="banner-title">{tv.nombre}</h2>
+                        <p className="banner-desc">
+                          Viví los partidos de la selección con la mejor definición y sonido inmersivo. ¡Hasta 20% OFF!
+                        </p>
+                        <div className="banner-price-wrapper">
+                          <span className="price-label">Desde</span>
+                          <span className="price-value">${tv.precio.toLocaleString("es-AR")}</span>
+                        </div>
+                        <Link to={`/producto/${tv.id}`} className="btn-banner-cta">
+                          Comprar Ahora
+                        </Link>
+                      </div>
+                      <div className="banner-image-container">
+                        <img src={tv.imagen} alt={tv.nombre} className="banner-image" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {maxSlides > 1 && (
+              <button className="carousel-arrow next" onClick={nextSlide} aria-label="Siguiente">
+                &#10095;
+              </button>
+            )}
+
+            {/* Indicadores / Puntos */}
+            {maxSlides > 1 && (
+              <div className="carousel-indicators">
+                {televisores.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`indicator-dot ${currentIndex === idx ? "active" : ""}`}
+                    onClick={() => setCurrentIndex(idx)}
+                    aria-label={`Ir al slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <div className="inicio-container">
+        {!user && (
+          <section className="promo-login-section">
+            <div className="promo-login-banner">
+              <div className="promo-info">
+                <h3>¡Descuentos Exclusivos del Mundial!</h3>
+                <p>
+                  Para poder realizar compras en nuestra tienda y acceder a descuentos, debés registrarte o iniciar sesión en tu cuenta.
+                </p>
+              </div>
+              <div className="promo-actions">
+                <Link to="/login" className="btn-promo-login">
+                  Iniciar Sesión
+                </Link>
+                <Link to="/registro" className="btn-promo-reg">
+                  Registrarse
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Sección de Bienvenida general */}
+        <section className="welcome-info-section">
+          <h2>Tecnología de Calidad en PRODUS</h2>
+          <p>
+            Explorá nuestro catálogo completo con envíos a todo el país. Contamos con los mejores productos de tecnología, electrohogar, climatización y más.
+          </p>
+          <div className="welcome-actions">
+            <Link to="/productos" className="btn-welcome-catalog">
+              Ver Todos los Productos
+            </Link>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default Inicio;

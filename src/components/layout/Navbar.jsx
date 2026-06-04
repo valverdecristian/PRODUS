@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { useToast } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
@@ -7,11 +8,13 @@ const Navbar = () => {
   const { cartCount } = useCart();
   const { showToast } = useToast();
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout()
       .then(() => {
         showToast("¡Sesión cerrada con éxito!", "success");
+        navigate('/');
       })
       .catch((error) => {
         showToast("Error al cerrar sesión: " + error.message, "error");
