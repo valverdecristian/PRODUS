@@ -1,37 +1,36 @@
 import { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase/config';
+import { useProductos } from './useProductos';
 
 export const useProducto = (id) => {
+  const { productos, cargando: cargandoProductos, error: errorProductos } = useProductos();
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducto = async () => {
-      try {
-        const productoRef = doc(db, 'productos-nacionales', id);
-        const productoSnapshot = await getDoc(productoRef);
+    if (cargandoProductos) {
+      setCargando(true);
+      return;
+    }
 
-        if (productoSnapshot.exists()) {
-          setProducto({
-            id: productoSnapshot.id,
-            ...productoSnapshot.data()
-          });
-        } else {
-          setError('Producto no encontrado');
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setCargando(false);
-      }
-    };
+    if (errorProductos) {
+      setError(errorProductos);
+      setCargando(false);
+      return;
+    }
 
     if (id) {
-      fetchProducto();
+      const encontrado = productos.find(p => p.id === id);
+      if (encontrado) {
+        setProducto(encontrado);
+        setError(null);
+      } else {
+        setProducto(null);
+        setError('Producto no encontrado');
+      }
+      setCargando(false);
     }
-  }, [id]);
+  }, [id, productos, cargandoProductos, errorProductos]);
 
   return { producto, cargando, error };
 };

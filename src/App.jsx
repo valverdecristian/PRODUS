@@ -9,25 +9,28 @@ import Login from "./components/login/Login";
 import Registro from "./components/registro/Registro";
 import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
+import { ProductosProvider } from "./context/ProductosContext";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <ToastProvider>
-      <CartProvider>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<ContenedorListaProductos />} />
-            <Route path="productos" element={<ContenedorListaProductos />} />
-            <Route path="producto/:id" element={<ProductoDetalle />} />
-            <Route path="carrito" element={<Carrito />} />
-            <Route path="agregar-producto" element={<FormularioContainer />} />
-            <Route path="categorias" element={<CategoriasContainer />} />
-            <Route path="login" element={<Login />} />
-            <Route path="registro" element={<Registro />} />
-          </Route>
-        </Routes>
-      </CartProvider>
+      <ProductosProvider>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<ContenedorListaProductos />} />
+              <Route path="productos" element={<ContenedorListaProductos />} />
+              <Route path="producto/:id" element={<ProductoDetalle />} />
+              <Route path="carrito" element={<Carrito />} />
+              <Route path="agregar-producto" element={<FormularioContainer />} />
+              <Route path="categorias" element={<CategoriasContainer />} />
+              <Route path="login" element={<Login />} />
+              <Route path="registro" element={<Registro />} />
+            </Route>
+          </Routes>
+        </CartProvider>
+      </ProductosProvider>
     </ToastProvider>
   );
 }

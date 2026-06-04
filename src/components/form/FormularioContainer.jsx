@@ -1,13 +1,13 @@
 import { useState } from "react";
 import FormularioProducto from "./FormularioProducto";
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from "../../firebase/config";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
 import { useAuth } from "../../context/AuthContext";
+import { useProductos } from "../../hooks/useProductos";
 
 const FormularioContainer = () => {
   const { user } = useAuth();
+  const { agregarProducto } = useProductos();
 
   if (!user || user.rol !== 'admin') {
     return <Navigate to="/" replace />;
@@ -87,8 +87,7 @@ const FormularioContainer = () => {
       };
 
       console.log("Enviando los siguientes datos COMPLETOS a Firestore:", productoCompleto);
-      const productosCollection = collection(db, "productos-nacionales");
-      const productoAgregado = await addDoc(productosCollection, productoCompleto);
+      const productoAgregado = await agregarProducto(productoCompleto);
       console.log("Producto agregado con ID:", productoAgregado.id);
 
       showToast("¡Producto agregado con éxito!", "success");
