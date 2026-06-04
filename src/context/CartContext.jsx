@@ -24,13 +24,11 @@ export const CartProvider = ({ children }) => {
       const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
 
       if (existingItemIndex > -1) {
-        // Si ya está, actualizamos la cantidad asegurando no exceder el stock disponible
         const newCart = [...prevCart];
         const newQuantity = newCart[existingItemIndex].cantidad + quantity;
         newCart[existingItemIndex].cantidad = Math.min(newQuantity, product.stock);
         return newCart;
       } else {
-        // Si no está, lo agregamos
         return [...prevCart, { ...product, cantidad: Math.min(quantity, product.stock) }];
       }
     });
@@ -44,7 +42,6 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) =>
       prevCart.map((item) => {
         if (item.id === id) {
-          // Limitar la cantidad al stock disponible del item
           const newQty = Math.max(1, Math.min(quantity, item.stock));
           return { ...item, cantidad: newQty };
         }
@@ -59,7 +56,6 @@ export const CartProvider = ({ children }) => {
 
   const cartTotal = cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
 
-  // NUEVA FUNCION: Obtener la cantidad de un item especifico
   const getCantidadActual = (productId) => {
     const item = cart.find((item) => item.id === productId);
     return item ? item.cantidad : 0;

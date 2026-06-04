@@ -24,6 +24,7 @@ const Navbar = () => {
         <Button text="Inicio" to="/" />
         <Button text="Productos" to="/productos" />
         <Button text="Categorías" to="/categorias" />
+        {user?.rol === 'admin' && <Button text="Gestión" to="/gestion" />}
         {user?.rol === 'admin' && <Button text="+" to="/agregar-producto" />}
         <Button text={cartCount > 0 ? `🛒 (${cartCount})` : '🛒'} to="/carrito" />
         {user ? (
