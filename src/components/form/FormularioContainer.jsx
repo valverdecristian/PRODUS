@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormularioProducto from "./FormularioProducto";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
@@ -21,9 +21,20 @@ const FormularioContainer = () => {
   });
 
   const [imagenFile, setImagenFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState("");
   const [cargando, setCargando] = useState(false);
   const navigate = useNavigate();
   const { showToast } = useToast();
+
+  useEffect(() => {
+    if (!imagenFile) {
+      setPreviewUrl("");
+      return;
+    }
+    const objectUrl = URL.createObjectURL(imagenFile);
+    setPreviewUrl(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [imagenFile]);
 
   const manejarCambio = (evento) => {
     const { name, value } = evento.target;
@@ -118,6 +129,7 @@ const FormularioContainer = () => {
       manejarEnvio={manejarEnvio}
       manejarCambioImagen={manejarCambioImagen}
       cargando={cargando}
+      previewUrl={previewUrl}
     />
   );
 };

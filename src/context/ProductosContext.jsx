@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { collection, onSnapshot, query, doc, deleteDoc, addDoc } from "firebase/firestore";
+import { collection, onSnapshot, query, doc, deleteDoc, addDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const ProductosContext = createContext();
@@ -46,8 +46,18 @@ export const ProductosProvider = ({ children }) => {
     }
   };
 
+  const actualizarProducto = async (id, prodActualizado) => {
+    try {
+      const docRef = doc(db, "productos-nacionales", id);
+      await updateDoc(docRef, prodActualizado);
+    } catch (err) {
+      console.error("Error al actualizar producto:", err);
+      throw err;
+    }
+  };
+
   return (
-    <ProductosContext.Provider value={{ productos, cargando, error, eliminarProducto, agregarProducto }}>
+    <ProductosContext.Provider value={{ productos, cargando, error, eliminarProducto, agregarProducto, actualizarProducto }}>
       {children}
     </ProductosContext.Provider>
   );
