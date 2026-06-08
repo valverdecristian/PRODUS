@@ -25,10 +25,9 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-links">
         <Button text="Inicio" to="/" />
-        <Button text="Productos" to="/productos" />
+        <Button text="Productos" to="/productos" matchPrefixes={["/producto/"]} />
         <Button text="Categorías" to="/categorias" />
-        {user?.rol === 'admin' && <Button text="Gestión" to="/gestion" />}
-        {user?.rol === 'admin' && <Button text="+" to="/agregar-producto" />}
+        {user?.rol === 'admin' && <Button text="Gestión" to="/gestion" matchPrefixes={["/agregar-producto"]} />}
         <Button text={cartCount > 0 ? `🛒 (${cartCount})` : '🛒'} to="/carrito" />
         {user ? (
           <>

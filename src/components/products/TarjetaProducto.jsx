@@ -24,7 +24,6 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
           )}
           <h3 className={styles.nombre}>{nombre}</h3>
           <p className={styles.precio}>${precio.toLocaleString('es-AR')}</p>
-          <p className={styles.stock}>Stock disponible: {stock}</p>
         </div>
       </Link>
       <div className={styles.info} style={{ paddingTop: 0 }}>

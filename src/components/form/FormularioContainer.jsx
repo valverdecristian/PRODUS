@@ -112,8 +112,8 @@ const FormularioContainer = () => {
       });
       setImagenFile(null);
 
-      // Redirect to catalog
-      navigate("/productos");
+      // Redirect to management panel
+      navigate("/gestion");
     } catch (error) {
       console.error("Error al procesar el formulario:", error);
       showToast(`Hubo un error al guardar el producto: ${error.message}`, "error");
@@ -130,6 +130,7 @@ const FormularioContainer = () => {
       manejarCambioImagen={manejarCambioImagen}
       cargando={cargando}
       previewUrl={previewUrl}
+      onCancelar={() => navigate("/gestion")}
     />
   );
 };

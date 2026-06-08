@@ -41,3 +41,9 @@
   width: 100%;
   filter: drop-shadow(0 0 15px var(--animation-color));
 }
+
+/* active navigation link */
+.nav-link-active .button .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 15px var(--animation-color));
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useProductos } from "../../hooks/useProductos";
 import { useToast } from "../../context/ToastContext";
@@ -14,6 +14,21 @@ const Gestion = () => {
   const { showToast } = useToast();
   
   const [productoAEliminar, setProductoAEliminar] = useState(null);
+  const [paginaActual, setPaginaActual] = useState(1);
+  const productosPorPagina = 10;
+
+  const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+
+  useEffect(() => {
+    if (paginaActual > totalPaginas && totalPaginas > 0) {
+      setPaginaActual(totalPaginas);
+    }
+  }, [productos.length, totalPaginas, paginaActual]);
+
+  const productosPaginados = productos.slice(
+    (paginaActual - 1) * productosPorPagina,
+    paginaActual * productosPorPagina
+  );
   const [productoAEditar, setProductoAEditar] = useState(null);
   const [datosForm, setDatosForm] = useState({
     nombre: "",
@@ -166,7 +181,12 @@ const Gestion = () => {
       <div className="gestion-container">
       <div className="gestion-header">
         <h2>Panel de Gestión de Productos</h2>
-        <span className="productos-count">Total: {productos.length} productos</span>
+        <div className="gestion-actions">
+          <span className="productos-count">Total: {productos.length} productos</span>
+          <Link to="/agregar-producto" className="btn-agregar-nuevo">
+            + Agregar Producto
+          </Link>
+        </div>
       </div>
 
       <div className="table-wrapper">
@@ -182,7 +202,7 @@ const Gestion = () => {
             </tr>
           </thead>
           <tbody>
-            {productos.map((prod) => (
+            {productosPaginados.map((prod) => (
               <tr key={prod.id}>
                 <td className="col-img">
                   <div className="thumb-container">
@@ -221,6 +241,28 @@ const Gestion = () => {
           </tbody>
         </table>
       </div>
+
+      {totalPaginas > 1 && (
+        <div className="gestion-paginacion">
+          <button 
+            className="paginacion-btn" 
+            onClick={() => setPaginaActual(prev => Math.max(prev - 1, 1))}
+            disabled={paginaActual === 1}
+          >
+            ← Anterior
+          </button>
+          <span className="paginacion-info">
+            Página {paginaActual} de {totalPaginas}
+          </span>
+          <button 
+            className="paginacion-btn" 
+            onClick={() => setPaginaActual(prev => Math.min(prev + 1, totalPaginas))}
+            disabled={paginaActual === totalPaginas}
+          >
+            Siguiente →
+          </button>
+        </div>
+      )}
     </div>
 
     {productoAEliminar && (
@@ -236,7 +278,7 @@ const Gestion = () => {
                 Cancelar
               </button>
               <button className="btn-confirmar-eliminar" onClick={confirmarEliminar}>
-                🗑️ Eliminar Permanente
+                Eliminar
               </button>
             </div>
           </div>
