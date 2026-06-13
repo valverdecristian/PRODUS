@@ -4,10 +4,27 @@ import { useToast } from "../../context/ToastContext";
 import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
 
+// ====================================================================
+// CONFIGURA AQUÍ LAS CREDENCIALES DE ACCESO RÁPIDO PARA LAS DEMOS
+// ====================================================================
+// Reemplaza estos valores con los correos y contraseñas reales creados
+// en tu base de datos de Firebase:
+const CREDENCIALES_ADMIN = {
+  email: "admin@gmail.com",
+  password: "admin1234"
+};
+
+const CREDENCIALES_CLIENTE = {
+  email: "cliente@gmail.com",
+  password: "cliente1234"
+};
+// ====================================================================
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [showQuickAccess, setShowQuickAccess] = useState(false);
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { login } = useAuth();
@@ -76,9 +93,59 @@ const Login = () => {
         </div>
       </form>
 
+      <div className="login-quick-access">
+        <button 
+          type="button" 
+          className="btn-quick-access-toggle"
+          onClick={() => setShowQuickAccess(true)}
+        >
+          Acceso Rápido
+        </button>
+      </div>
+
       <p className="login-footer">
         ¿No tienes cuenta? <Link to="/registro" className="login-link">Regístrate aquí</Link>
       </p>
+
+      {showQuickAccess && (
+        <div className="login-modal-overlay" onClick={() => setShowQuickAccess(false)}>
+          <div className="login-modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Acceso Rápido</h3>
+            <p>Selecciona un perfil para rellenar las credenciales automáticamente:</p>
+            <div className="quick-access-badges-modal">
+              <button 
+                type="button" 
+                className="badge-quick-access admin"
+                onClick={() => {
+                  setEmail(CREDENCIALES_ADMIN.email);
+                  setPassword(CREDENCIALES_ADMIN.password);
+                  setShowQuickAccess(false);
+                }}
+              >
+                Admin
+              </button>
+              <button 
+                type="button" 
+                className="badge-quick-access cliente"
+                onClick={() => {
+                  setEmail(CREDENCIALES_CLIENTE.email);
+                  setPassword(CREDENCIALES_CLIENTE.password);
+                  setShowQuickAccess(false);
+                }}
+              >
+                Cliente
+              </button>
+            </div>
+            <button 
+              type="button" 
+              className="btn-modal-close"
+              onClick={() => setShowQuickAccess(false)}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

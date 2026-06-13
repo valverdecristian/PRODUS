@@ -9,6 +9,8 @@ import Login from "./components/login/Login";
 import Registro from "./components/registro/Registro";
 import Gestion from "./components/gestion/Gestion";
 import Inicio from "./components/inicio/Inicio";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Perfil from "./components/perfil/Perfil";
 import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
 import { ProductosProvider } from "./context/ProductosContext";
@@ -24,12 +26,55 @@ function App() {
               <Route index element={<Inicio />} />
               <Route path="productos" element={<ContenedorListaProductos />} />
               <Route path="producto/:id" element={<ProductoDetalle />} />
-              <Route path="carrito" element={<Carrito />} />
-              <Route path="agregar-producto" element={<FormularioContainer />} />
-              <Route path="gestion" element={<Gestion />} />
+              <Route 
+                path="carrito" 
+                element={
+                  <ProtectedRoute>
+                    <Carrito />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="agregar-producto" 
+                element={
+                  <ProtectedRoute rolesPermitidos={["admin"]}>
+                    <FormularioContainer />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="gestion" 
+                element={
+                  <ProtectedRoute rolesPermitidos={["admin"]}>
+                    <Gestion />
+                  </ProtectedRoute>
+                } 
+              />
               <Route path="categorias" element={<CategoriasContainer />} />
-              <Route path="login" element={<Login />} />
-              <Route path="registro" element={<Registro />} />
+              <Route 
+                path="login" 
+                element={
+                  <ProtectedRoute soloAnonimos>
+                    <Login />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="registro" 
+                element={
+                  <ProtectedRoute soloAnonimos>
+                    <Registro />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="perfil" 
+                element={
+                  <ProtectedRoute>
+                    <Perfil />
+                  </ProtectedRoute>
+                } 
+              />
             </Route>
           </Routes>
         </CartProvider>

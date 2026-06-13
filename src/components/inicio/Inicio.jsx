@@ -137,7 +137,7 @@ const Inicio = () => {
 
         {/* Sección de Bienvenida general */}
         <section className="welcome-info-section">
-          <h2>Tecnología de Calidad en PRODUS</h2>
+          <h2>Todo lo que necesitas esta en Produs</h2>
           <p>
             Explorá nuestro catálogo completo con envíos a todo el país. Contamos con los mejores productos de tecnología, electrohogar, climatización y más.
           </p>

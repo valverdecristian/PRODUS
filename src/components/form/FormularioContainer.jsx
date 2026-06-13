@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import FormularioProducto from "./FormularioProducto";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
-import { useAuth } from "../../context/AuthContext";
 import { useProductos } from "../../hooks/useProductos";
 
 const FormularioContainer = () => {
-  const { user } = useAuth();
   const { agregarProducto } = useProductos();
-
-  if (!user || user.rol !== 'admin') {
-    return <Navigate to="/" replace />;
-  }
 
   const [datosForm, setDatosForm] = useState({
     nombre: "",
@@ -64,7 +58,6 @@ const FormularioContainer = () => {
     setCargando(true);
 
     try {
-      // 1. Upload image to Imgbb
       const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
       if (!apiKey) {
         throw new Error("La clave API de Imgbb (VITE_IMGBB_API_KEY) no está configurada en las variables de entorno.");
@@ -88,7 +81,6 @@ const FormularioContainer = () => {
       const urlImagen = datosImgbb.data.url;
       console.log("Imagen subida con éxito. URL:", urlImagen);
 
-      // 2. Upload product to Firebase Firestore
       const productoCompleto = {
         nombre: datosForm.nombre,
         precio: Number(datosForm.precio),
@@ -103,7 +95,6 @@ const FormularioContainer = () => {
 
       showToast("¡Producto agregado con éxito!", "success");
 
-      // Reset form
       setDatosForm({
         nombre: "",
         precio: "",
@@ -112,7 +103,6 @@ const FormularioContainer = () => {
       });
       setImagenFile(null);
 
-      // Redirect to management panel
       navigate("/gestion");
     } catch (error) {
       console.error("Error al procesar el formulario:", error);

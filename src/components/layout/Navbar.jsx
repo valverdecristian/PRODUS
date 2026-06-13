@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { useToast } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
@@ -31,9 +31,9 @@ const Navbar = () => {
         <Button text={cartCount > 0 ? `🛒 (${cartCount})` : '🛒'} to="/carrito" />
         {user ? (
           <>
-            <span className="user-email-badge" title={user.email}>
+            <Link to="/perfil" className="user-email-badge" title="Ver mi Perfil">
               Hola, {user.email.split('@')[0]}!
-            </span>
+            </Link>
             <Button text="Salir" onClick={handleLogout} />
           </>
         ) : (

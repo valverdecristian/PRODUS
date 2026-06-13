@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 import { useProductos } from "../../hooks/useProductos";
 import { useToast } from "../../context/ToastContext";
 import LoadingSpinner from "../ui/LoadingSpinner";
@@ -9,7 +8,6 @@ import categorias from "../../data/categorias.json";
 import "./Gestion.css";
 
 const Gestion = () => {
-  const { user } = useAuth();
   const { productos, cargando, error, eliminarProducto, actualizarProducto } = useProductos();
   const { showToast } = useToast();
   
@@ -53,10 +51,6 @@ const Gestion = () => {
     setPreviewUrl(objectUrl);
     return () => URL.revokeObjectURL(objectUrl);
   }, [imagenFile, productoAEditar]);
-
-  if (!user || user.rol !== "admin") {
-    return <Navigate to="/" replace />;
-  }
 
   const obtenerNombreCategoria = (catId) => {
     if (!catId) return "Sin Categoría";

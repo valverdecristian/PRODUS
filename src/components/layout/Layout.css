@@ -69,4 +69,14 @@
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-email-badge:hover {
+  background: rgba(138, 245, 229, 0.12);
+  border-color: rgba(138, 245, 229, 0.65);
+  box-shadow: 0 0 10px rgba(138, 245, 229, 0.3);
+  transform: translateY(-1px);
 }
