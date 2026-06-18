@@ -1,6 +1,7 @@
 import { useCart } from '../../hooks/useCart';
 import { Link } from 'react-router-dom';
 import { useToast } from '../../context/ToastContext';
+import { FaShoppingCart, FaMinus, FaPlus, FaTrashAlt, FaRegTrashAlt, FaArrowLeft, FaCreditCard } from 'react-icons/fa';
 import './Carrito.css';
 
 const Carrito = () => {
@@ -16,7 +17,7 @@ const Carrito = () => {
     return (
       <div className="cart-empty-container">
         <div className="cart-empty-card">
-          <div className="cart-empty-icon">🛒</div>
+          <div className="cart-empty-icon"><FaShoppingCart size={64} /></div>
           <h2>Tu carrito está vacío</h2>
           <p>Explora nuestro catálogo y agrega los mejores productos tecnológicos a tu carrito.</p>
           <Link to="/productos" className="btn-return-shop">
@@ -50,16 +51,18 @@ const Carrito = () => {
                   onClick={() => updateQuantity(item.id, item.cantidad - 1)} 
                   disabled={item.cantidad <= 1}
                   className="qty-btn"
+                  aria-label="Disminuir cantidad"
                 >
-                  -
+                  <FaMinus />
                 </button>
                 <span className="qty-value">{item.cantidad}</span>
                 <button 
                   onClick={() => updateQuantity(item.id, item.cantidad + 1)}
                   disabled={item.cantidad >= item.stock}
                   className="qty-btn"
+                  aria-label="Incrementar cantidad"
                 >
-                  +
+                  <FaPlus />
                 </button>
               </div>
 
@@ -73,17 +76,17 @@ const Carrito = () => {
                 className="cart-item-delete"
                 title="Eliminar producto"
               >
-                ✕
+                <FaTrashAlt />
               </button>
             </div>
           ))}
 
           <div className="cart-actions-bottom">
             <button onClick={clearCart} className="btn-clear-cart">
-              Vaciar Carrito
+              <FaRegTrashAlt /> Vaciar Carrito
             </button>
             <Link to="/productos" className="btn-continue-shopping">
-              Seguir Comprando
+              <FaArrowLeft /> Seguir Comprando
             </Link>
           </div>
         </div>
@@ -107,7 +110,7 @@ const Carrito = () => {
               <span className="total-value">${cartTotal.toLocaleString('es-AR')}</span>
             </div>
             <button onClick={handleSimularCompra} className="btn-checkout">
-              Finalizar Compra
+              <FaCreditCard /> Finalizar Compra
             </button>
           </div>
         </div>

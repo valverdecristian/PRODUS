@@ -27,6 +27,10 @@ const ProductoDetalle = () => {
 
   return (
     <section className="detalle-producto">
+      <title>{producto.nombre} | PRODUS</title>
+      <meta name="description" content={`Compra ${producto.nombre} en PRODUS por $${producto.precio.toLocaleString('es-AR')} ARS. Categoría: ${nombreCategoria || 'General'}.`} />
+      <meta name="keywords" content={`${producto.nombre}, PRODUS, tienda online, tecnologia, comprar ${producto.nombre}`} />
+      
       <div className="contenedor-detalle">
         <div className="imagen-container">
           <img src={producto.imagen} alt={producto.nombre} />

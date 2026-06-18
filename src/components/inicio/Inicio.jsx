@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useProductos } from "../../hooks/useProductos";
 import LoadingSpinner from "../ui/LoadingSpinner";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./Inicio.css";
 
 const Inicio = () => {
@@ -53,7 +54,7 @@ const Inicio = () => {
           <div className="carousel-wrapper">
             {maxSlides > 1 && (
               <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Anterior">
-                &#10094;
+                <FaChevronLeft />
               </button>
             )}
 
@@ -92,7 +93,7 @@ const Inicio = () => {
 
             {maxSlides > 1 && (
               <button className="carousel-arrow next" onClick={nextSlide} aria-label="Siguiente">
-                &#10095;
+                <FaChevronRight />
               </button>
             )}
 

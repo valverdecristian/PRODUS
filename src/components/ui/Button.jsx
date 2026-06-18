@@ -1,12 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Button.css';
 
-const Button = ({ text = 'Button', to = '#', onClick = null, matchPrefixes = [] }) => {
+const Button = ({ text = '', to = '#', onClick = null, matchPrefixes = [], icon = null }) => {
   const location = useLocation();
+  const hasIcon = !!icon;
+  
   const buttonContent = (
-    <button className="button" data-text={text} onClick={onClick}>
-      <span className="actual-text">&nbsp;{text}&nbsp;</span>
-      <span aria-hidden="true" className="hover-text">&nbsp;{text}&nbsp;</span>
+    <button className={`button ${hasIcon ? 'button-with-icon' : ''}`} data-text={text} onClick={onClick}>
+      {hasIcon ? (
+        <span className="btn-content-wrapper">
+          {icon}
+          {text && <span className="btn-text">{text}</span>}
+        </span>
+      ) : (
+        <>
+          <span className="actual-text">&nbsp;{text}&nbsp;</span>
+          <span aria-hidden="true" className="hover-text">&nbsp;{text}&nbsp;</span>
+        </>
+      )}
     </button>
   );
 

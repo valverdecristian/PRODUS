@@ -3,6 +3,7 @@ import { useCart } from '../../hooks/useCart';
 import { useToast } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
+import { FaShoppingCart, FaUser, FaSignOutAlt, FaSignInAlt } from 'react-icons/fa';
 
 const Navbar = () => {
   const { cartCount } = useCart();
@@ -28,16 +29,16 @@ const Navbar = () => {
         <Button text="Productos" to="/productos" matchPrefixes={["/producto/"]} />
         <Button text="Categorías" to="/categorias" />
         {user?.rol === 'admin' && <Button text="Gestión" to="/gestion" matchPrefixes={["/agregar-producto"]} />}
-        <Button text={cartCount > 0 ? `🛒 (${cartCount})` : '🛒'} to="/carrito" />
+        <Button icon={<FaShoppingCart />} text={cartCount > 0 ? `(${cartCount})` : ''} to="/carrito" />
         {user ? (
           <>
             <Link to="/perfil" className="user-email-badge" title="Ver mi Perfil">
-              Hola, {user.email.split('@')[0]}!
+              <FaUser /> Hola, {user.email.split('@')[0]}!
             </Link>
-            <Button text="Salir" onClick={handleLogout} />
+            <Button text="Salir" icon={<FaSignOutAlt />} onClick={handleLogout} />
           </>
         ) : (
-          <Button text="Ingresar" to="/login" />
+          <Button text="Ingresar" icon={<FaSignInAlt />} to="/login" />
         )}
       </div>
     </nav>

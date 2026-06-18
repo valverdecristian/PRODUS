@@ -5,6 +5,7 @@ import { useToast } from "../../context/ToastContext";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import FormularioProducto from "../form/FormularioProducto";
 import categorias from "../../data/categorias.json";
+import { FaPlus, FaEdit, FaTrash, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "./Gestion.css";
 
 const Gestion = () => {
@@ -178,7 +179,7 @@ const Gestion = () => {
         <div className="gestion-actions">
           <span className="productos-count">Total: {productos.length} productos</span>
           <Link to="/agregar-producto" className="btn-agregar-nuevo">
-            + Agregar Producto
+            <FaPlus /> Agregar Producto
           </Link>
         </div>
       </div>
@@ -216,10 +217,10 @@ const Gestion = () => {
                 <td className="col-acciones">
                   <div className="acciones-buttons">
                     <button onClick={() => abrirEditar(prod)} className="btn-editar" title="Editar Producto">
-                      Editar
+                      <FaEdit />
                     </button>
                     <button onClick={() => abrirConfirmacion(prod)} className="btn-eliminar" title="Eliminar Producto">
-                      Eliminar
+                      <FaTrash />
                     </button>
                   </div>
                 </td>
@@ -243,7 +244,7 @@ const Gestion = () => {
             onClick={() => setPaginaActual(prev => Math.max(prev - 1, 1))}
             disabled={paginaActual === 1}
           >
-            ← Anterior
+            <FaAngleLeft /> Anterior
           </button>
           <span className="paginacion-info">
             Página {paginaActual} de {totalPaginas}
@@ -253,7 +254,7 @@ const Gestion = () => {
             onClick={() => setPaginaActual(prev => Math.min(prev + 1, totalPaginas))}
             disabled={paginaActual === totalPaginas}
           >
-            Siguiente →
+            Siguiente <FaAngleRight />
           </button>
         </div>
       )}
