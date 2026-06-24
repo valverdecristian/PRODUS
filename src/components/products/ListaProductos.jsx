@@ -1,12 +1,15 @@
+import { Row, Col } from 'react-bootstrap';
 import TarjetaProducto from "./TarjetaProducto";
 
 const ListaProductos = ({ productos }) => {
   return (
-    <div className="product-grid">
+    <Row className="g-4 justify-content-center">
       {productos.map((producto) => (
-        <TarjetaProducto key={producto.id} {...producto} />
+        <Col xs={12} sm={6} lg={4} key={producto.id} className="d-flex align-items-stretch">
+          <TarjetaProducto {...producto} />
+        </Col>
       ))}
-    </div>
+    </Row>
   )
 }
 

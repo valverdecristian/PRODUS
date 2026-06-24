@@ -3,6 +3,7 @@ import ContadorProducto from './ContadorProducto';
 import BotonFavorito from '../ui/BotonFavorito';
 import { Link } from 'react-router-dom';
 import categorias from '../../data/categorias.json';
+import { generarSlug } from '../../utils/slug';
 
 const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
   const nombreCategoria = categoria 
@@ -10,8 +11,8 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
     : null;
 
   return (
-    <div className={styles.card}>
-      <Link to={`/producto/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <div className={`${styles.card} w-100`}>
+      <Link to={`/producto/${id}/${generarSlug(nombre)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className={styles.imageContainer}>
           <img src={imagen} alt={nombre} className={styles.image} />
           <div className={styles.favoriteButton}>

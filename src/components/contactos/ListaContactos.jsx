@@ -1,13 +1,15 @@
+import { Row, Col } from 'react-bootstrap';
 import TarjetaContacto from './TarjetaContacto';
-import styles from './TarjetaContacto.module.css';
 
-const ListaContactos = ({contactos}) => {
+const ListaContactos = ({ contactos }) => {
     return (
-        <div className={styles.flexContainer}>
+        <Row className="justify-content-center g-2 g-sm-3 flex-nowrap px-2 m-0 mx-auto" style={{ maxWidth: '720px' }}>
             {contactos.map((contacto) => (
-                <TarjetaContacto key={contacto.id} {...contacto} />
+                <Col xs={4} key={contacto.id} className="d-flex align-items-stretch justify-content-center" style={{ minWidth: 0 }}>
+                    <TarjetaContacto {...contacto} />
+                </Col>
             ))}
-        </div>
+        </Row>
     );
 };
 export default ListaContactos;

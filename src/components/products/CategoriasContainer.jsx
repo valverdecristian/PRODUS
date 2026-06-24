@@ -3,16 +3,7 @@ import ListaProductos from "./ListaProductos";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import { useProductos } from "../../hooks/useProductos";
 import categorias from "../../data/categorias.json";
-import { 
-  FaLaptop, 
-  FaTv, 
-  FaLightbulb, 
-  FaWind, 
-  FaMobileAlt, 
-  FaPaw, 
-  FaEllipsisH, 
-  FaThList 
-} from "react-icons/fa";
+import { FaLaptop, FaTv, FaLightbulb, FaWind, FaMobileAlt, FaPaw, FaEllipsisH, FaThList } from "react-icons/fa";
 import "./CategoriasContainer.css";
 
 const obtenerIconoCategoria = (catId) => {
@@ -43,9 +34,13 @@ const CategoriasContainer = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
   const [cargandoFiltro, setCargandoFiltro] = useState(false);
   const [mensajeFiltro, setMensajeFiltro] = useState("");
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
   const alSeleccionarCategoria = (catId, catNombre) => {
-    if (catId === categoriaSeleccionada) return;
+    if (catId === categoriaSeleccionada) {
+      setMenuAbierto(false);
+      return;
+    }
 
     setCargandoFiltro(true);
     setMensajeFiltro(`Buscando productos en ${catNombre}...`);
@@ -53,6 +48,7 @@ const CategoriasContainer = () => {
     setTimeout(() => {
       setCategoriaSeleccionada(catId);
       setCargandoFiltro(false);
+      setMenuAbierto(false);
     }, 600);
   };
 
@@ -73,28 +69,46 @@ const CategoriasContainer = () => {
     ? productos
     : productos.filter((p) => p.categoria === categoriaSeleccionada);
 
+  const nombreCategoriaSeleccionada = categoriaSeleccionada === "todas"
+    ? "Todas"
+    : (categorias.find(c => c.id === categoriaSeleccionada)?.nombre || "Todas");
+
   return (
     <section className="catalog-container">
       <h2>Filtrar por Categoría</h2>
-      
-      <div className="categories-wrapper">
-        <button
-          className={`badge-categoria ${categoriaSeleccionada === "todas" ? "active" : ""}`}
-          onClick={() => alSeleccionarCategoria("todas", "Todas las categorías")}
-          disabled={cargandoFiltro}
+
+      {/* Botón de control para colapsar en móviles/tablets */}
+      <div className="d-flex justify-content-center d-lg-none mb-4">
+        <button 
+          className="btn-toggle-categorias w-100 mx-3"
+          onClick={() => setMenuAbierto(!menuAbierto)}
         >
-          <FaThList /> Todas
+          <span className="me-2">{obtenerIconoCategoria(categoriaSeleccionada)}</span>
+          Categoría: {nombreCategoriaSeleccionada} {menuAbierto ? "▲" : "▼"}
         </button>
-        {categorias.map((cat) => (
+      </div>
+      
+      {/* Contenedor colapsable: se controla en móvil con menuAbierto, siempre visible en pantallas grandes */}
+      <div className={`categories-collapse-wrapper ${menuAbierto ? 'show' : ''}`}>
+        <div className="categories-wrapper">
           <button
-            key={cat.id}
-            className={`badge-categoria ${categoriaSeleccionada === cat.id ? "active" : ""}`}
-            onClick={() => alSeleccionarCategoria(cat.id, cat.nombre)}
+            className={`badge-categoria ${categoriaSeleccionada === "todas" ? "active" : ""}`}
+            onClick={() => alSeleccionarCategoria("todas", "Todas las categorías")}
             disabled={cargandoFiltro}
           >
-            {obtenerIconoCategoria(cat.id)} {cat.nombre}
+            <FaThList /> Todas
           </button>
-        ))}
+          {categorias.map((cat) => (
+            <button
+              key={cat.id}
+              className={`badge-categoria ${categoriaSeleccionada === cat.id ? "active" : ""}`}
+              onClick={() => alSeleccionarCategoria(cat.id, cat.nombre)}
+              disabled={cargandoFiltro}
+            >
+              {obtenerIconoCategoria(cat.id)} {cat.nombre}
+            </button>
+          ))}
+        </div>
       </div>
 
       {cargandoFiltro ? (

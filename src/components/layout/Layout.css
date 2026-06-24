@@ -80,3 +80,145 @@
   box-shadow: 0 0 10px rgba(138, 245, 229, 0.3);
   transform: translateY(-1px);
 }
+
+/* --- ESTILOS ADICIONALES PARA BOOTSTRAP Y RESPONSIVIDAD --- */
+
+/* Hamburguesa de Navbar personalizada con colores del tema */
+.navbar-toggler {
+  border: 1px solid var(--border) !important;
+  background-color: var(--code-bg) !important;
+  padding: 8px !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 10px var(--accent-border) !important;
+  outline: none !important;
+}
+
+.navbar-toggler-icon {
+  /* Filtro para transformar el ícono svg en el color var(--accent) (#69c2f2) */
+  filter: invert(75%) sepia(20%) saturate(1500%) hue-rotate(175deg) brightness(100%) contrast(95%);
+}
+
+@media (max-width: 991px) {
+  /* En pantallas móviles, dar formato a la lista de enlaces */
+  .nav-links {
+    width: 100%;
+    padding: 1rem 0;
+    gap: 15px !important;
+  }
+}
+
+/* --- ESTILOS DE REDES SOCIALES EN EL FOOTER --- */
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.social-icon-link {
+  color: var(--text);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.social-icon-link:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 5px rgba(105, 194, 242, 0.5));
+}
+
+.btn-link-reset {
+  outline: none;
+}
+
+/* Modales personalizados estilo Cyberpunk */
+.custom-contact-modal .modal-content {
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: 0 0 25px rgba(105, 194, 242, 0.15) !important;
+  border-radius: 12px !important;
+}
+
+.custom-contact-modal .modal-header {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.custom-contact-modal .modal-title {
+  color: var(--accent) !important;
+  font-family: var(--heading) !important;
+  font-weight: bold !important;
+}
+
+.custom-contact-modal .modal-footer {
+  border-top: 1px solid var(--border) !important;
+}
+
+.custom-contact-modal .close-button-custom {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.custom-contact-modal .close-button-custom:hover {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.custom-contact-modal .form-control {
+  background-color: rgba(9, 73, 108, 0.15) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-h) !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-contact-modal .form-control:focus {
+  background-color: rgba(9, 73, 108, 0.25) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 10px rgba(105, 194, 242, 0.25) !important;
+  outline: none !important;
+}
+
+.custom-contact-modal .form-label {
+  color: var(--accent) !important;
+  font-size: 0.95rem;
+  font-weight: 550;
+}
+
+.btn-cyber-submit {
+  background-color: var(--accent);
+  color: var(--code-bg);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 10px 20px;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(105, 194, 242, 0.2);
+}
+
+.btn-cyber-submit:hover:not(:disabled) {
+  background-color: #7dd0fc;
+  box-shadow: 0 0 15px rgba(105, 194, 242, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-cyber-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+

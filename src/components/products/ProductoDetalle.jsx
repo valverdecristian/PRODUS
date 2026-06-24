@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import ContadorProducto from './ContadorProducto';
 import BotonFavorito from '../ui/BotonFavorito';
 import { useProducto } from '../../hooks/useProducto';
@@ -8,6 +9,15 @@ import categorias from '../../data/categorias.json';
 const ProductoDetalle = () => {
   const { id } = useParams();
   const { producto, cargando, error } = useProducto(id);
+
+  useEffect(() => {
+    if (producto && producto.nombre) {
+      document.title = `${producto.nombre} | PRODUS`;
+    }
+    return () => {
+      document.title = "Produs";
+    };
+  }, [producto]);
 
   if (cargando) {
     return <p>Cargando producto...</p>;

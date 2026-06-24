@@ -4,6 +4,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useProductos } from "../../hooks/useProductos";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { generarSlug } from "../../utils/slug";
+import { Container, Row, Col } from "react-bootstrap";
 import "./Inicio.css";
 
 const Inicio = () => {
@@ -78,7 +80,7 @@ const Inicio = () => {
                           <span className="price-label">Desde</span>
                           <span className="price-value">${tv.precio.toLocaleString("es-AR")}</span>
                         </div>
-                        <Link to={`/producto/${tv.id}`} className="btn-banner-cta">
+                        <Link to={`/producto/${tv.id}/${generarSlug(tv.nombre)}`} className="btn-banner-cta">
                           Comprar Ahora
                         </Link>
                       </div>
@@ -114,41 +116,41 @@ const Inicio = () => {
         </section>
       )}
 
-      <div className="inicio-container">
+      <Container className="inicio-container my-5">
         {!user && (
-          <section className="promo-login-section">
-            <div className="promo-login-banner">
-              <div className="promo-info">
+          <section className="promo-login-section mb-5">
+            <Row className="promo-login-banner align-items-center justify-content-between p-4 rounded-3 g-4">
+              <Col xs={12} md={8} className="promo-info text-start">
                 <h3>¡Descuentos Exclusivos del Mundial!</h3>
-                <p>
+                <p className="mb-0">
                   Para poder realizar compras en nuestra tienda y acceder a descuentos, debés registrarte o iniciar sesión en tu cuenta.
                 </p>
-              </div>
-              <div className="promo-actions">
+              </Col>
+              <Col xs={12} md={4} className="promo-actions d-flex gap-3 justify-content-md-end justify-content-center">
                 <Link to="/login" className="btn-promo-login">
                   Iniciar Sesión
                 </Link>
                 <Link to="/registro" className="btn-promo-reg">
                   Registrarse
                 </Link>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </section>
         )}
 
         {/* Sección de Bienvenida general */}
-        <section className="welcome-info-section">
+        <section className="welcome-info-section text-center p-4 rounded-3 border">
           <h2>Todo lo que necesitas esta en Produs</h2>
-          <p>
+          <p className="mx-auto" style={{ maxWidth: '750px' }}>
             Explorá nuestro catálogo completo con envíos a todo el país. Contamos con los mejores productos de tecnología, electrohogar, climatización y más.
           </p>
-          <div className="welcome-actions">
+          <div className="welcome-actions mt-3">
             <Link to="/productos" className="btn-welcome-catalog">
               Ver Todos los Productos
             </Link>
           </div>
         </section>
-      </div>
+      </Container>
     </div>
   );
 };

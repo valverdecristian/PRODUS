@@ -64,3 +64,51 @@
   text-align: center;
   margin: 2rem 0;
 }
+
+/* --- RESPONSIVIDAD PARA EL MENÚ DE CATEGORÍAS --- */
+
+/* Ocultar el menú de categorías por defecto en pantallas chicas, a menos que esté abierto */
+@media (max-width: 991px) {
+  .categories-collapse-wrapper {
+    display: none;
+    width: 100%;
+  }
+  .categories-collapse-wrapper.show {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* En pantallas de escritorio, siempre visible */
+@media (min-width: 992px) {
+  .categories-collapse-wrapper {
+    display: block !important;
+  }
+}
+
+/* Botón disparador del colapso en móvil */
+.btn-toggle-categorias {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-toggle-categorias:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-bg);
+  box-shadow: 0 4px 12px rgba(105, 194, 242, 0.2);
+}
+
+.btn-toggle-categorias:active {
+  transform: scale(0.98);
+}
+

@@ -11,9 +11,13 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 15px;
-  width: 200px;
+  width: 100%;
+  max-width: 240px;
   text-align: center;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item:hover {
@@ -41,8 +45,9 @@
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .linkedinLink:hover {
@@ -52,6 +57,39 @@
 .item img {
   border-radius: 8px;
   margin-top: 15px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 2px solid var(--accent-border);
+}
+
+/* Ajustes responsivos para celulares (pantallas muy chicas) */
+@media (max-width: 576px) {
+  .item {
+    padding: 8px;
+    border-radius: 8px;
+  }
+  .item h2 {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item p {
+    font-size: 0.7rem;
+    margin: 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item img {
+    margin-top: 8px;
+    border-width: 1px;
+  }
+  .linkedinLink {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+    margin-top: 8px;
+  }
 }
