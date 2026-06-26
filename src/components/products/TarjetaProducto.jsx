@@ -12,7 +12,7 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
 
   return (
     <div className={`${styles.card} w-100`}>
-      <Link to={`/producto/${id}/${generarSlug(nombre)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link to={`/producto/${generarSlug(nombre)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className={styles.imageContainer}>
           <img src={imagen} alt={nombre} className={styles.image} />
           <div className={styles.favoriteButton}>

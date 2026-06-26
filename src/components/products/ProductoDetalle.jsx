@@ -7,8 +7,8 @@ import './ProductoDetalle.css';
 import categorias from '../../data/categorias.json';
 
 const ProductoDetalle = () => {
-  const { id } = useParams();
-  const { producto, cargando, error } = useProducto(id);
+  const { slug } = useParams();
+  const { producto, cargando, error } = useProducto(slug);
 
   useEffect(() => {
     if (producto && producto.nombre) {

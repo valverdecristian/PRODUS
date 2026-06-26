@@ -80,7 +80,7 @@ const Inicio = () => {
                           <span className="price-label">Desde</span>
                           <span className="price-value">${tv.precio.toLocaleString("es-AR")}</span>
                         </div>
-                        <Link to={`/producto/${tv.id}/${generarSlug(tv.nombre)}`} className="btn-banner-cta">
+                        <Link to={`/producto/${generarSlug(tv.nombre)}`} className="btn-banner-cta">
                           Comprar Ahora
                         </Link>
                       </div>
