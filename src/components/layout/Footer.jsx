@@ -145,7 +145,7 @@ const Footer = () => {
               disabled={cargando}
             >
               <FaPaperPlane />
-              {cargando ? "Enviando señal..." : "Enviar Mensaje"}
+              {cargando ? "Enviando mensaje..." : "Enviar Mensaje"}
             </button>
           </Form>
         </Modal.Body>
