@@ -16,7 +16,7 @@ const TarjetaProducto = ({ id, imagen, nombre, precio, stock, categoria }) => {
         <div className={styles.imageContainer}>
           <img src={imagen} alt={nombre} className={styles.image} />
           <div className={styles.favoriteButton}>
-            <BotonFavorito />
+            <BotonFavorito productoId={id} />
           </div>
         </div>
         <div className={styles.info} style={{ paddingBottom: 0 }}>

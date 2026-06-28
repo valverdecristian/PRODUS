@@ -14,6 +14,7 @@ import Perfil from "./components/perfil/Perfil";
 import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
 import { ProductosProvider } from "./context/ProductosContext";
+import { FavoritosProvider } from "./context/FavoritosContext";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
     <ToastProvider>
       <ProductosProvider>
         <CartProvider>
-          <Routes>
+          <FavoritosProvider>
+            <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Inicio />} />
               <Route path="productos" element={<ContenedorListaProductos />} />
@@ -77,6 +79,7 @@ function App() {
               />
             </Route>
           </Routes>
+          </FavoritosProvider>
         </CartProvider>
       </ProductosProvider>
     </ToastProvider>

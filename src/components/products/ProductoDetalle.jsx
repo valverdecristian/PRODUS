@@ -54,7 +54,7 @@ const ProductoDetalle = () => {
           <p className="stock">Stock disponible: {producto.stock}</p>
           <div className="contenedor-acciones">
             <ContadorProducto producto={producto} esDetalle={true} />
-            <BotonFavorito />
+            <BotonFavorito productoId={producto.id} />
           </div>
         </div>
       </div>
