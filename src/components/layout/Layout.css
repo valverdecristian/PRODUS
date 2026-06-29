@@ -221,4 +221,84 @@
   cursor: not-allowed;
 }
 
+/* --- BUSCADOR EN EL NAVBAR --- */
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 6px 30px 6px 36px;
+  background: rgba(6, 45, 66, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-h);
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(6, 45, 66, 0.7);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(105, 194, 242, 0.35);
+  max-width: 280px;
+}
+
+.search-icon-btn {
+  position: absolute;
+  left: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  opacity: 0.6;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  opacity: 0.6;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.search-clear-btn:hover {
+  opacity: 1;
+  color: var(--danger);
+}
+
+.search-input:focus + .search-icon-btn,
+.search-icon-btn:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+@media (max-width: 991px) {
+  .search-form {
+    max-width: 100%;
+    margin: 8px 0;
+  }
+  .search-input:focus {
+    max-width: 100%;
+  }
+}
+
+
 

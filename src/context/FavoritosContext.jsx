@@ -7,11 +7,8 @@ export const FavoritosProvider = ({ children }) => {
   const { user } = useAuth();
   const [favoritos, setFavoritos] = useState([]);
 
-  // Si el usuario está logueado, usamos su uid como sufijo de la clave.
-  // Si no, usamos 'guest' para visitantes anónimos.
   const storageKey = user ? `favoritos_${user.uid}` : 'favoritos_guest';
 
-  // Carga los favoritos cuando cambia el usuario o clave de almacenamiento
   useEffect(() => {
     try {
       const saved = localStorage.getItem(storageKey);

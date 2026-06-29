@@ -64,11 +64,38 @@
   color: white;
 }
 
+.contadorContenedor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
 .accionesCart {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 10px;
-  margin-top: 1rem;
+}
+
+.selectorCantidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.enCarritoBadge {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-top: 6px;
+  align-self: flex-end;
+  background: rgba(105, 194, 242, 0.08);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(105, 194, 242, 0.2);
+  display: inline-block;
+  font-weight: 500;
 }
 
 .btnCart {
@@ -130,6 +157,7 @@
   justify-content: center;
   gap: 0;
   margin-top: 0;
+  width: 100%;
 }
 
 /* Opcional: Ajustar el tamaño del corazón si se ve muy grande respecto a los botones */
@@ -149,4 +177,10 @@
   border: 1px solid var(--accent-border);
   color: var(--accent);
   margin-bottom: 0.6rem;
+}
+
+@media (max-width: 576px) {
+  .info {
+    padding: 0.8rem 1rem;
+  }
 }

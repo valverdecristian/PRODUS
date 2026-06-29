@@ -15,15 +15,17 @@ import { CartProvider } from "./context/CartContext";
 import { ToastProvider } from "./context/ToastContext";
 import { ProductosProvider } from "./context/ProductosContext";
 import { FavoritosProvider } from "./context/FavoritosContext";
+import { SearchProvider } from "./context/SearchContext";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <ToastProvider>
       <ProductosProvider>
-        <CartProvider>
-          <FavoritosProvider>
-            <Routes>
+        <SearchProvider>
+          <CartProvider>
+            <FavoritosProvider>
+              <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Inicio />} />
               <Route path="productos" element={<ContenedorListaProductos />} />
@@ -79,8 +81,9 @@ function App() {
               />
             </Route>
           </Routes>
-          </FavoritosProvider>
-        </CartProvider>
+            </FavoritosProvider>
+          </CartProvider>
+        </SearchProvider>
       </ProductosProvider>
     </ToastProvider>
   );

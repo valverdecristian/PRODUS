@@ -1,7 +1,4 @@
 .perfil-contenedor {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 75vh;
   padding: 40px 20px;
 }
@@ -278,8 +275,11 @@
 }
 
 @media (max-width: 768px) {
+  .perfil-contenedor {
+    padding: 20px 10px;
+  }
   .perfil-favoritos {
-    padding: 1.5rem;
+    padding: 1rem;
     min-height: auto;
   }
 }

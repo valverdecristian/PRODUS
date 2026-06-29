@@ -16,20 +16,40 @@ La aplicación cuenta con las siguientes vistas principales, organizadas mediant
 ### 🔓 Públicas
 1.  **Inicio / Home (`/`)**: Portada principal con un carrusel dinámico interactivo (filtrando artículos de la categoría "Especial Mundial" de televisores) y banners promocionales.
 ![Inicio](./public/capturas/inicio.png)
+
+<br>
+
 2.  **Catálogo (`/productos`)**: Listado completo de los productos nacionales con estados de carga.
 ![Productos](./public/capturas/productos.png)
+
+<br>
+
 3.  **Ficha de Producto (`/producto/:id`)**: Detalle extendido de un producto específico, permitiendo ver especificaciones y añadirlo al carrito.
 ![Detalle de Producto](./public/capturas/producto_detalle.png)
+
+<br>
+
 4.  **Categorías (`/categorias`)**: Vista para navegar de forma directa y segmentada por las distintas categorías disponibles.
 ![Categorías](./public/capturas/categorias.png)
+
+<br>
+
 5.  **Ingresar (`/login`)**: Formulario de inicio de sesión con validaciones (protegida para usuarios no autenticados).
 ![Ingresar](./public/capturas/login.png)
+
+<br>
+
 6.  **Registro (`/registro`)**: Formulario para la creación de nuevas cuentas (protegida para usuarios no autenticados).
 ![Registro](./public/capturas/registro.png)
+
+<br>
 
 ### 🔒 Protegidas (Requieren Login)
 7.  **Carrito de Compras (`/carrito`)**: Lista de artículos agregados por el usuario, permitiendo modificar las cantidades y calcular totales antes de finalizar la compra.
 ![Carrito](./public/capturas/carrito.png)
+
+<br>
+
 8.  **Mi Perfil (`/perfil`)**: Panel del usuario donde se muestra información del correo y estado de la cuenta.
 ![Mi Perfil](./public/capturas/perfil.png)
 

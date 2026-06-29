@@ -28,30 +28,38 @@ const ContadorProducto = ({ producto, esDetalle = false }) => {
   };
 
   return (
-    <div className={styles.accionesCart}>
-      <button onClick={decrementar} disabled={cantidad === 0 || agregado} className={styles.btnCart} aria-label="Restar cantidad">
-        <FaMinus />
-      </button>
-      <span className={styles.cantidad}>{cantidad}</span>
-      <button onClick={incrementar} disabled={cantidad === producto.stock || agregado} className={styles.btnCart} aria-label="Sumar cantidad">
-        <FaPlus />
-      </button>
-      <button
-        onClick={agregarAlCarrito}
-        disabled={cantidad === 0 || agregado}
-        className={`${styles.btnAgregar} ${agregado ? styles.btnAgregado : ''}`}
-        >
-        {agregado ? (
-          <>
-            <FaCheck /> Agregado
-          </>
-        ) : (
-          <>
-            <FaCartPlus /> Agregar
-          </>
-        )}
-      </button>
-      <p style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', marginLeft: '10px' }}>En carrito: {cantidadActual}</p>
+    <div className={styles.contadorContenedor}>
+      <div className={styles.accionesCart}>
+        <div className={styles.selectorCantidad}>
+          <button onClick={decrementar} disabled={cantidad === 0 || agregado} className={styles.btnCart} aria-label="Restar cantidad">
+            <FaMinus />
+          </button>
+          <span className={styles.cantidad}>{cantidad}</span>
+          <button onClick={incrementar} disabled={cantidad === producto.stock || agregado} className={styles.btnCart} aria-label="Sumar cantidad">
+            <FaPlus />
+          </button>
+        </div>
+        <button
+          onClick={agregarAlCarrito}
+          disabled={cantidad === 0 || agregado}
+          className={`${styles.btnAgregar} ${agregado ? styles.btnAgregado : ''}`}
+          >
+          {agregado ? (
+            <>
+              <FaCheck /> Agregado
+            </>
+          ) : (
+            <>
+              <FaCartPlus /> Agregar
+            </>
+          )}
+        </button>
+      </div>
+      {cantidadActual > 0 && (
+        <div className={styles.enCarritoBadge}>
+          En carrito: <strong>{cantidadActual}</strong>
+        </div>
+      )}
     </div>
   );
 };

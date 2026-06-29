@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ListaProductos from "./ListaProductos";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import { useProductos } from "../../hooks/useProductos";
@@ -35,6 +35,11 @@ const CategoriasContainer = () => {
   const [cargandoFiltro, setCargandoFiltro] = useState(false);
   const [mensajeFiltro, setMensajeFiltro] = useState("");
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(9);
+
+  useEffect(() => {
+    setVisibleCount(9);
+  }, [categoriaSeleccionada]);
 
   const alSeleccionarCategoria = (catId, catNombre) => {
     if (catId === categoriaSeleccionada) {
@@ -88,7 +93,6 @@ const CategoriasContainer = () => {
         </button>
       </div>
       
-      {/* Contenedor colapsable: se controla en móvil con menuAbierto, siempre visible en pantallas grandes */}
       <div className={`categories-collapse-wrapper ${menuAbierto ? 'show' : ''}`}>
         <div className="categories-wrapper">
           <button
@@ -119,7 +123,15 @@ const CategoriasContainer = () => {
         </p>
       ) : (
         <div>
-          <ListaProductos productos={productosFiltrados} />
+          <ListaProductos productos={productosFiltrados.slice(0, visibleCount)} />
+          
+          {productosFiltrados.length > visibleCount && (
+            <div className="d-flex justify-content-center mt-5">
+              <button className="btn-ver-mas" onClick={() => setVisibleCount((prev) => prev + 9)}>
+                Ver más
+              </button>
+            </div>
+          )}
         </div>
       )}
     </section>

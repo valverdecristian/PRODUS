@@ -44,6 +44,9 @@ const ProductoDetalle = () => {
       <div className="contenedor-detalle">
         <div className="imagen-container">
           <img src={producto.imagen} alt={producto.nombre} />
+          <div className="favorite-btn-detalle">
+            <BotonFavorito productoId={producto.id} />
+          </div>
         </div>
         <div className="info-producto">
           {nombreCategoria && (
@@ -54,7 +57,6 @@ const ProductoDetalle = () => {
           <p className="stock">Stock disponible: {producto.stock}</p>
           <div className="contenedor-acciones">
             <ContadorProducto producto={producto} esDetalle={true} />
-            <BotonFavorito productoId={producto.id} />
           </div>
         </div>
       </div>
