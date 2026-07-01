@@ -105,6 +105,25 @@ const FormularioProducto = ({
               ))}
             </select>
           </div>
+
+          <div className="form-group">
+            <div className="form-label-container">
+              <label className="form-label" htmlFor="descripcion">Descripción:</label>
+              <span className={`char-counter ${(datosForm.descripcion || "").length >= 300 ? "limite-alcanzado" : ""}`}>
+                {(datosForm.descripcion || "").length}/300
+              </span>
+            </div>
+            <textarea
+              id="descripcion"
+              className="form-input form-textarea"
+              placeholder="Ej: Teclado mecánico retroiluminado con interruptores táctiles silenciosos..."
+              name="descripcion"
+              value={datosForm.descripcion || ""}
+              onChange={manejarCambio}
+              maxLength={300}
+              disabled={cargando}
+            />
+          </div>
         </div>
 
         <div className="form-columna-media">

@@ -11,7 +11,8 @@ const FormularioContainer = () => {
     nombre: "",
     precio: "",
     stock: "",
-    categoria: ""
+    categoria: "",
+    descripcion: ""
   });
 
   const [imagenFile, setImagenFile] = useState(null);
@@ -86,7 +87,8 @@ const FormularioContainer = () => {
         precio: Number(datosForm.precio),
         stock: Number(datosForm.stock),
         imagen: urlImagen,
-        categoria: datosForm.categoria
+        categoria: datosForm.categoria,
+        descripcion: datosForm.descripcion || ""
       };
 
       console.log("Enviando los siguientes datos COMPLETOS a Firestore:", productoCompleto);
@@ -99,7 +101,8 @@ const FormularioContainer = () => {
         nombre: "",
         precio: "",
         stock: "",
-        categoria: ""
+        categoria: "",
+        descripcion: ""
       });
       setImagenFile(null);
 

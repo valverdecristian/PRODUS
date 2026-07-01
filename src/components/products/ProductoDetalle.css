@@ -139,3 +139,20 @@
 .favorite-btn-detalle:hover {
   transform: scale(1.1);
 }
+
+.descripcion-container {
+  margin: 5px 0;
+  padding: 10px 14px;
+  background: rgba(105, 194, 242, 0.05);
+  border-left: 3px solid #00a8cc;
+  border-radius: 0 6px 6px 0;
+}
+
+.descripcion-texto {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+  white-space: pre-wrap;
+}
+

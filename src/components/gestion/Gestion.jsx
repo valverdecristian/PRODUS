@@ -33,7 +33,8 @@ const Gestion = () => {
     nombre: "",
     precio: "",
     stock: "",
-    categoria: ""
+    categoria: "",
+    descripcion: ""
   });
   const [imagenFile, setImagenFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
@@ -83,7 +84,8 @@ const Gestion = () => {
       nombre: prod.nombre,
       precio: prod.precio.toString(),
       stock: prod.stock.toString(),
-      categoria: prod.categoria
+      categoria: prod.categoria,
+      descripcion: prod.descripcion || ""
     });
     setImagenFile(null);
     setPreviewUrl(prod.imagen);
@@ -144,7 +146,8 @@ const Gestion = () => {
         precio: Number(datosForm.precio),
         stock: Number(datosForm.stock),
         imagen: urlImagen,
-        categoria: datosForm.categoria
+        categoria: datosForm.categoria,
+        descripcion: datosForm.descripcion || ""
       };
 
       await actualizarProducto(productoAEditar.id, productoActualizado);

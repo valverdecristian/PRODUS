@@ -250,3 +250,39 @@ select.form-input option {
     padding-top: 0.5rem;
   }
 }
+
+/* Descripción y contador de caracteres */
+.form-label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-label-container .form-label {
+  margin-bottom: 0;
+}
+
+.char-counter {
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.6;
+  font-weight: normal;
+  transition: all 0.2s ease;
+}
+
+.char-counter.limite-alcanzado {
+  color: #ff4d4d;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+

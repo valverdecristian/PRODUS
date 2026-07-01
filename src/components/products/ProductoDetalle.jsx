@@ -38,7 +38,7 @@ const ProductoDetalle = () => {
   return (
     <section className="detalle-producto">
       <title>{producto.nombre} | PRODUS</title>
-      <meta name="description" content={`Compra ${producto.nombre} en PRODUS por $${producto.precio.toLocaleString('es-AR')} ARS. Categoría: ${nombreCategoria || 'General'}.`} />
+      <meta name="description" content={producto.descripcion || `Compra ${producto.nombre} en PRODUS por $${producto.precio.toLocaleString('es-AR')} ARS. Categoría: ${nombreCategoria || 'General'}.`} />
       <meta name="keywords" content={`${producto.nombre}, PRODUS, tienda online, tecnologia, comprar ${producto.nombre}`} />
       
       <div className="contenedor-detalle">
@@ -54,6 +54,13 @@ const ProductoDetalle = () => {
           )}
           <h1>{producto.nombre}</h1>
           <p className="precio">${producto.precio.toLocaleString('es-AR')}</p>
+          
+          {producto.descripcion && (
+            <div className="descripcion-container">
+              <p className="descripcion-texto">{producto.descripcion}</p>
+            </div>
+          )}
+
           <p className="stock">Stock disponible: {producto.stock}</p>
           <div className="contenedor-acciones">
             <ContadorProducto producto={producto} esDetalle={true} />
