@@ -1,0 +1,248 @@
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(2, 10, 15, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: cartFadeIn 0.25s ease-out;
+}
+
+.cart-modal-content {
+  background-color: #041b27;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: var(--shadow), 0 0 30px rgba(105, 194, 242, 0.15);
+  animation: cartScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--text-h);
+}
+
+.cart-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.cart-modal-close:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.cart-modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.success-icon-wrapper {
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #00cc99;
+  filter: drop-shadow(0 0 8px rgba(0, 204, 153, 0.4));
+  animation: iconPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s both;
+}
+
+.cart-modal-header h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(105, 194, 242, 0.2);
+}
+
+.cart-modal-product-details {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: rgba(6, 45, 66, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cart-modal-product-img {
+  width: 90px;
+  height: 90px;
+  background-color: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cart-modal-product-img img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.cart-modal-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-modal-product-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-modal-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.meta-item strong {
+  color: var(--text-h);
+}
+
+.cart-modal-product-subtotal {
+  font-size: 1rem;
+  color: var(--text-h);
+}
+
+.cart-modal-product-subtotal strong {
+  color: #00a8cc;
+  font-weight: 700;
+}
+
+.cart-modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-seguir-comprando {
+  padding: 0.8rem 1.5rem;
+  background-color: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.btn-seguir-comprando:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.btn-ver-carrito {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent);
+  color: var(--code-bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-ver-carrito:hover {
+  background-color: var(--text-h);
+  color: var(--code-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(105, 194, 242, 0.2);
+}
+
+.btn-ver-carrito:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes cartFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cartScaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes iconPop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .cart-modal-content {
+    padding: 1.5rem;
+  }
+
+  .cart-modal-product-details {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .cart-modal-product-img {
+    margin: 0 auto;
+  }
+
+  .cart-modal-product-meta {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .cart-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-seguir-comprando, .btn-ver-carrito {
+    width: 100%;
+  }
+}

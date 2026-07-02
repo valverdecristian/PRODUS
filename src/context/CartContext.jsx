@@ -13,6 +13,16 @@ export const CartProvider = ({ children }) => {
     }
   });
 
+  const [modalInfo, setModalInfo] = useState({
+    isOpen: false,
+    product: null,
+    quantity: 0
+  });
+
+  const closeModal = () => {
+    setModalInfo(prev => ({ ...prev, isOpen: false }));
+  };
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
@@ -20,17 +30,31 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product, quantity) => {
     if (quantity <= 0) return;
 
+    const existingItem = cart.find((item) => item.id === product.id);
+    const currentQty = existingItem ? existingItem.cantidad : 0;
+    const finalQuantity = Math.min(currentQty + quantity, product.stock);
+    const actualAdded = finalQuantity - currentQty;
+
+    if (actualAdded <= 0) {
+      return;
+    }
+
     setCart((prevCart) => {
       const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
 
       if (existingItemIndex > -1) {
         const newCart = [...prevCart];
-        const newQuantity = newCart[existingItemIndex].cantidad + quantity;
-        newCart[existingItemIndex].cantidad = Math.min(newQuantity, product.stock);
+        newCart[existingItemIndex].cantidad = finalQuantity;
         return newCart;
       } else {
-        return [...prevCart, { ...product, cantidad: Math.min(quantity, product.stock) }];
+        return [...prevCart, { ...product, cantidad: finalQuantity }];
       }
+    });
+
+    setModalInfo({
+      isOpen: true,
+      product,
+      quantity: actualAdded
     });
   };
 
@@ -72,9 +96,12 @@ export const CartProvider = ({ children }) => {
         cartCount,
         cartTotal,
         getCantidadActual,
+        modalInfo,
+        closeModal
       }}
     >
       {children}
     </CartContext.Provider>
   );
 };
+
